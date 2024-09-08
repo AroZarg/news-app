@@ -19,7 +19,7 @@ export const fetchArticles = async (query, page = 1) => {
   } catch (error) {
     console.log(error)
     console.error('Error fetching articles:', error);
-    Toast.show( error.config.message, {
+    Toast.show( error.message, {
       duration: Toast.durations.LONG,
       position: Toast.positions.TOP,
     })

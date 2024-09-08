@@ -11,7 +11,6 @@ import { setNews } from '../redux/dataSlicer';
 
 const HomeScreen = ({navigation}) => {
     const dispatch = useDispatch()
-
     const [data,setData] = useState([])
     const [page,setPage] = useState(1)
     const [refreshing, setRefreshing] =useState(false);
@@ -68,7 +67,7 @@ const HomeScreen = ({navigation}) => {
           setHasMore(false); 
         }
       } catch (error) {
-        Toast.show( error.config.massage, {
+        Toast.show( error.massage, {
           duration: Toast.durations.LONG,
           position: Toast.positions.BOTTOM,
         })
@@ -77,7 +76,7 @@ const HomeScreen = ({navigation}) => {
       }
     }
     const loadMoreData = ()=>{
-      if (!loading && hasMore&&!query) {
+      if (!loading&&hasMore&&!query) {
         getData('', page);
       }
     }
@@ -97,6 +96,7 @@ const HomeScreen = ({navigation}) => {
   
       return () => clearInterval(interval); 
     }, []);
+
     const showConnectionError = () => {
       Toast.show('No internet connection available', {
         duration: Toast.durations.LONG,
